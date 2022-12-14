@@ -34,9 +34,12 @@
     <div class="employees">
       <div class="row mt-5" *ngIf="employees.length == 0">
         <div class="col text-center">
-          <span class="text-secondary fs-2 fw-bold fst-italic"
-            >There are No Employees To Display !!!</span
-          >
+          <span *ngIf="errorMsg == ''" else #thenBlock  class="text-secondary fs-2 fw-bold fst-italic">
+            There are No Employees To Display !!!
+          </span>
+          <span #thenBlock class="text-danger fs-2 fw-bold fst-italic">
+            {{errorMsg}}
+          </span>
         </div>
       </div>
       <!-- AREA TO DISPLAY ALL THE EMPLOYEES -->

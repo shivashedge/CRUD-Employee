@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   @ViewChild('addEmployeeButton') addEmployeeButton: any;
 
   title = 'CRUD-Employee';
+  errorMsg: string = ''
   employeeForm: FormGroup;
   employees: Employee[];
   employeesToDisplay: Employee[];
@@ -51,6 +52,8 @@ export class AppComponent implements OnInit {
         this.employees.unshift(emp);
       }
       this.employeesToDisplay = this.employees;
+    },(error)=>{
+      this.errorMsg = error
     });
   }
 

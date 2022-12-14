@@ -1,28 +1,3 @@
 {
-  "employees": [
-    {
-      "firstName": "Virat",
-      "lastName": "",
-      "birthDate": "",
-      "gender": "m",
-      "education": "10th pass",
-      "company": "",
-      "jobExperience": "",
-      "salary": "",
-      "profile": "Profile-M04.jpg",
-      "id": 7
-    },
-    {
-      "firstName": "shiva",
-      "lastName": "",
-      "birthDate": "",
-      "gender": "m",
-      "education": "10th pass",
-      "company": "",
-      "jobExperience": "",
-      "salary": "",
-      "profile": "shivaprofile.jpg",
-      "id": 8
-    }
-  ]
+  "employees": []
 }
