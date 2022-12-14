@@ -10,6 +10,7 @@ import { EmployeeService } from './services/employee.service';
 })
 export class AppComponent implements OnInit {
   @ViewChild('fileInput') fileInput: any;
+  @ViewChild('addEmployeeButton') addEmployeeButton: any;
 
   title = 'CRUD-Employee';
   employeeForm: FormGroup;
@@ -46,12 +47,11 @@ export class AppComponent implements OnInit {
     });
 
     this.employeeService.getEmployees().subscribe((result) => {
-      for(let emp of result){
-this.employees.unshift(emp)
+      for (let emp of result) {
+        this.employees.unshift(emp);
       }
-      this.employeesToDisplay = this.employees
+      this.employeesToDisplay = this.employees;
     });
-    
   }
 
   addEmployee() {
@@ -70,6 +70,60 @@ this.employees.unshift(emp)
       this.employees.unshift(res);
       this.clearForm();
     });
+  }
+
+  removeEmployee(event: any) {
+    this.employees.forEach((val, index) => {
+      if (val.id === parseInt(event)) {
+        this.employeeService.deleteEmployee(event).subscribe((res) => {
+          this.employees.splice(index, 1);
+        });
+      }
+    });
+  }
+
+  editEmployee(event: any) {
+    this.employees.forEach((val, ind) => {
+      if (val.id === event) {
+        this.setForm(val);
+      }
+    });
+    this.removeEmployee(event);
+    this.addEmployeeButton.nativeElement.click();
+  }
+
+  searchEmployees(event: any) {
+    let filteredEmployees: Employee[] = [];
+
+    if (event === '') {
+      this.employeesToDisplay = this.employees;
+    } else {
+      filteredEmployees = this.employees.filter((val, index) => {
+        let targetKey =
+          val.firstName.toLowerCase() + '' + val.lastName.toLowerCase();
+        let searchKey = event.toLowerCase();
+        return targetKey.includes(searchKey);
+      });
+      this.employeesToDisplay = filteredEmployees;
+    }
+  }
+
+  setForm(emp: Employee) {
+    this.FirstName.setValue(emp.firstName);
+    this.LastName.setValue(emp.lastName);
+    this.BirthDay.setValue(emp.birthDate);
+    this.Gender.setValue(emp.gender);
+
+    let educationIndex = 0;
+    this.educationOptions.forEach((val, index) => {
+      if (val === emp.education) educationIndex = index;
+    });
+    this.Education.setValue(educationIndex);
+
+    this.Company.setValue(emp.company);
+    this.JobExperience.setValue(emp.jobExperience);
+    this.Salary.setValue(emp.salary);
+    this.fileInput.nativeElement.value = '';
   }
 
   clearForm() {

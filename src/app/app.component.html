@@ -6,6 +6,15 @@
   <main class="">
     <!-- TOOLBAR TO ADD AND SEARCH EMPLOYEES -->
     <div class="toolbar">
+
+      <div class="search-employees">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search Employees"
+          (input)="searchEmployees(searchInput.value)" #searchInput
+        />
+      </div>
       <div class="add-employee">
         <button
           type="button"
@@ -18,13 +27,7 @@
         </button>
       </div>
 
-      <div class="search-employees">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Search Employees"
-        />
-      </div>
+      
     </div>
 
     <!-- AREA TO DISPLAY NO EMPLOYEES Added -->
@@ -32,7 +35,7 @@
       <div class="row mt-5" *ngIf="employees.length == 0">
         <div class="col text-center">
           <span class="text-secondary fs-2 fw-bold fst-italic"
-            >There are No Employees Added!</span
+            >There are No Employees To Display !!!</span
           >
         </div>
       </div>
@@ -43,7 +46,7 @@
         *ngFor="let employee of employeesToDisplay; let ei = index"
       >
         <div class="col">
-          <app-employee [employee]="employee"></app-employee>
+          <app-employee [employee]="employee" (onRemoveEmployee)="removeEmployee($event)" (onEditEmployee)="editEmployee($event)"></app-employee>
         </div>
       </div>
     </div>

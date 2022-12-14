@@ -1,29 +1,28 @@
 {
   "employees": [
     {
-      "firstName": "Rohit",
-      "lastName": "Sharma",
-      "birthDate": "2022-01-12",
-      "gender": "m",
-      "education": "post graduate",
-      "company": "Google",
-      "jobExperience": 20,
-      "salary": 50,
-      "profile": "Profile-M03.jpg",
-      "id": 1
-    },
-  
-    {
       "firstName": "Virat",
-      "lastName": "Kohli",
-      "birthDate": "2022-12-01",
-      "gender": "",
-      "education": "post graduate",
-      "company": "TCS",
-      "jobExperience": 5,
-      "salary": 18,
+      "lastName": "",
+      "birthDate": "",
+      "gender": "m",
+      "education": "10th pass",
+      "company": "",
+      "jobExperience": "",
+      "salary": "",
       "profile": "Profile-M04.jpg",
-      "id": 2
+      "id": 7
+    },
+    {
+      "firstName": "shiva",
+      "lastName": "",
+      "birthDate": "",
+      "gender": "m",
+      "education": "10th pass",
+      "company": "",
+      "jobExperience": "",
+      "salary": "",
+      "profile": "shivaprofile.jpg",
+      "id": 8
     }
   ]
 }
